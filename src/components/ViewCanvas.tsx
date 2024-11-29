@@ -1,6 +1,8 @@
 "use client";
 
+import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import FloatingCan from "./FloatingCan";
 
 type Props = {};
 
@@ -24,19 +26,8 @@ const ViewCanvas = (props: Props) => {
       dpr={[1, 1.5]} // device pixel ratio
       gl={{ antialias: true }} // WebGL
     >
-      {/* mesh is an instance of a 3d object */}
-      <mesh rotation={[0.5, 0.5, 0]} position={[1, 0, 0]}>
-        {/* boxGeometry is like the html of the object */}
-        <boxGeometry />
-        {/* meshStandardMaterial is how the object looks like */}
-        <meshStandardMaterial color={"hotpink"} />
-      </mesh>
-
-      {/* this is outside of the object aka its environment */}
-      {/* ambientLight brings light from all direction / sides with the same intensity */}
-      <ambientLight intensity={2} />
-      {/* spotLight adds more depth or definition to the object */}
-      <spotLight intensity={3} position={[1, 1, 1]} />
+      <FloatingCan />
+      <Environment files="/hdrs/lobby.hdr" environmentIntensity={1.5} />
     </Canvas>
   );
 };

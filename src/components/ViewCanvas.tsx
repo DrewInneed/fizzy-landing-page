@@ -1,8 +1,8 @@
 "use client";
 
-import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import FloatingCan from "./FloatingCan";
+
+import { View } from "@react-three/drei";
 
 type Props = {};
 
@@ -16,7 +16,7 @@ const ViewCanvas = (props: Props) => {
         left: "50%",
         transform: "translateX(-50%)",
         overflow: "hidden",
-        pointerEvents: "none",
+        // pointerEvents: "none",
         zIndex: 30,
       }}
       camera={{
@@ -26,8 +26,7 @@ const ViewCanvas = (props: Props) => {
       dpr={[1, 1.5]} // device pixel ratio
       gl={{ antialias: true }} // WebGL
     >
-      <FloatingCan />
-      <Environment files="/hdrs/lobby.hdr" environmentIntensity={1.5} />
+      <View.Port />
     </Canvas>
   );
 };

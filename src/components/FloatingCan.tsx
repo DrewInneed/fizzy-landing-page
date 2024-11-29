@@ -16,7 +16,7 @@ const FloatingCan = forwardRef<Group, FloatingCanProps>(
   (
     {
       flavor = "blackCherry",
-      floatingSpeed = 1.5,
+      floatingSpeed = 2,
       rotationIntensity = 1,
       floatIntensity = 1,
       floatingRange = [-0.1, 0.1],
@@ -34,7 +34,7 @@ const FloatingCan = forwardRef<Group, FloatingCanProps>(
           floatingRange={floatingRange} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
         >
           {children}
-          <SodaCan />
+          <SodaCan flavor={flavor} />
         </Float>
       </group>
     );

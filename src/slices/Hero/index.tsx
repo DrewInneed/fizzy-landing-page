@@ -1,14 +1,16 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import { asText, Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Bounded } from "@/components/Bounded";
 import Button from "@/components/Button";
+import { View } from "@react-three/drei";
+import FloatingCanScene from "./Scene";
 import { TextSplitter } from "./TextSplitter";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -71,7 +73,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       .fromTo(
         "body",
         {
-          background: "#FDE047", 
+          background: "#FDE047",
         },
         {
           background: "#D9F99D",
@@ -103,6 +105,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
+      <View className="hero-scene ccpointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+        <FloatingCanScene />
+      </View>
+
       <div className="grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">

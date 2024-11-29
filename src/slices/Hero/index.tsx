@@ -5,12 +5,13 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { Bounded } from "@/components/Bounded";
 import Button from "@/components/Button";
 import { TextSplitter } from "./TextSplitter";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
  * Props for `Hero`.
@@ -25,10 +26,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   useGSAP(() => {
     // timeline 1
     const introTl = gsap.timeline();
-
     introTl
-      // why need this ? bc opacity css will run first, then this set opacity back to 1
-      // while the animation starts running, make it smooth
+      // * why need this ? bc opacity css will run first, then this set opacity back to 1
+      // * while the animation starts running, make it smooth
       .set(".hero", { opacity: 1 })
       // the biggest text
       .from(".hero-header", {
@@ -55,6 +55,44 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         opacity: 0,
         y: 10,
         duration: 0.6,
+      });
+
+    // timeline 2
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5,
+        markers: true,
+      },
+    });
+    scrollTl
+      // anim the whole body color
+      .fromTo(
+        "body",
+        {
+          background: "#FDE047", 
+        },
+        {
+          background: "#D9F99D",
+          overwrite: "auto",
+        },
+        // * this is not second any more it is more like percentage, so if the whole anim is 4 seconds,
+        // * 1 here is like wait until the anim to get 25% and then do it
+        1,
+      )
+      .from(".text-side-heading .split-char", {
+        scale: 1.3,
+        y: 40,
+        rotate: -25,
+        opacity: 0,
+        stagger: 0.1,
+        ease: "back.out(3)",
+        duration: 0.5,
+      })
+      .from(".text-side-body", {
+        y: 20,
+        opacity: 0,
       });
   });
 

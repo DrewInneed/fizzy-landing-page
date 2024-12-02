@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Whole"
+						}
+					}
+				]
+			},
+			"price_copy": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore veniam officia voluptate laborum minim cupidatat nisi sunt magna cillum culpa ea pariatur Lorem elit. Culpa ex deserunt aute irure mollit."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

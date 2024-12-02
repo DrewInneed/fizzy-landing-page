@@ -4,6 +4,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { View } from "@react-three/drei";
 
+import Footer from "@/components/Footer";
 import { Bubbles } from "../Hero/Bubbles";
 
 /**
@@ -35,6 +36,8 @@ const BigText = ({ slice }: BigTextProps): JSX.Element => {
         </div>
         <div className="text-[32vw]">smile</div>
       </h2>
+
+      <Footer />
     </section>
   );
 };

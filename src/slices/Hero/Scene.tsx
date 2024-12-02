@@ -5,12 +5,16 @@ import { useRef } from "react";
 import { Group } from "three";
 
 import FloatingCan from "@/components/FloatingCan";
+import { useStore } from "@/hooks/useStore";
 
 gsap.registerPlugin(useGSAP);
 
 type Props = {};
 
 const Scene = (props: Props) => {
+  // hooks
+  const isReady = useStore(({ isReady }) => isReady);
+
   // refs
   const can1Ref = useRef<Group>(null);
   const can2Ref = useRef<Group>(null);
@@ -35,6 +39,11 @@ const Scene = (props: Props) => {
       !mainGroupRef.current
     )
       return;
+
+    // * have to do this because for slow connection the text will be animated
+    // * first then the cans will be due to the Scene is not ready
+    // * so we have to check if the Scene is ready and animate all of them at the same time
+    isReady();
 
     // ! set the cans positions
     gsap.set(can1Ref.current.position, { x: -1.5 });

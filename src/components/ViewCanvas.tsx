@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 
 import { View } from "@react-three/drei";
+// import { Perf } from "r3f-perf";
 
 type Props = {};
 
@@ -27,6 +28,7 @@ const ViewCanvas = (props: Props) => {
       gl={{ antialias: true }} // WebGL
     >
       <View.Port />
+      {/* <Perf /> */}
     </Canvas>
   );
 };

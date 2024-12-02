@@ -12,6 +12,7 @@ import Button from "@/components/Button";
 import { View } from "@react-three/drei";
 import FloatingCanScene from "./Scene";
 import { TextSplitter } from "./TextSplitter";
+import { Bubbles } from "./Bubbles";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -105,8 +106,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <View className="hero-scene ccpointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
         <FloatingCanScene />
+        <Bubbles speed={2} />
       </View>
 
       <div className="grid">

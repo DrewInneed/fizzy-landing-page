@@ -51,7 +51,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           scale: 3,
           opacity: 0,
           ease: "power4.in",
-          dely: 0.3,
+          delay: 0.3,
           stagger: 1, // add 1 second delays to each elements from the selector
         })
         // the subheading
@@ -77,9 +77,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           start: "top top",
-          end: "bottom bottom",
+          end: "+=950", // adjust this from the tutorial because the hero text get disappeared
           scrub: 1.5,
-          markers: true,
+          // markers: true,
         },
       });
       scrollTl
